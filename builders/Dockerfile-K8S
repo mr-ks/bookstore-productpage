@@ -1,0 +1,8 @@
+FROM nginx
+LABEL project="tum-bookstore"
+
+RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+RUN rm -rf /etc/nginx/html
+
+COPY public /usr/share/nginx/svelte
+COPY build/conf/nginx-k8s.conf /etc/nginx/nginx.conf

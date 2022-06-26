@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tum-productpage
+  labels:
+    app: productpage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productpage
+  template:
+    metadata:
+      labels:
+        app: productpage
+    spec:
+      containers:
+        - name: productpage
+          image: tum/productpage:kubernetes
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
